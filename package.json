@@ -1,0 +1,29 @@
+{
+  "name": "imovies",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n api,web \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run build -w client",
+    "start": "npm start -w server",
+    "seed": "npm run seed -w server",
+    "test": "npm test -w server",
+    "test:ui": "npm test -w client",
+    "format": "prettier --write \"**/*.{js,jsx,css,json,md,yml}\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "prettier": "^3.9.10"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true,
+    "mongodb-memory-server@10.4.3": true
+  }
+}
